@@ -33,7 +33,7 @@ with col2:
 
     model_choice = st.selectbox(
         "Select Model",
-        ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+        ["openai/gpt-oss-120b", "openai/gpt-oss-120b"]
     )
 
 topic = st.text_input("Topic", placeholder="e.g., The benefits of morning walks for developers")
@@ -70,7 +70,7 @@ if st.button("Generate Content", type="primary"):
 
                 # Call Groq API
                 response = client.chat.completions.create(
-                    model=model_choice,
+                    model=openai/gpt-oss-120b,
                     messages=[
                         {"role": "system", "content": "You are a professional social media content assistant."},
                         {"role": "user", "content": prompt}
