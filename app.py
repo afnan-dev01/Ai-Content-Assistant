@@ -5,7 +5,7 @@ from groq import Groq
 st.set_page_config(page_title="AI Content Assistant", page_icon="✨", layout="centered")
 
 st.title("✨ AI Content Assistant")
-st.write("Generate tailored posts with captions and hashtags powered by Groq AI.")
+st.write("Generate tailored posts with captions and hashtags powered by OpenAI models via Groq.")
 
 # Sidebar for API Key input
 st.sidebar.header("Configuration")
@@ -33,7 +33,7 @@ with col2:
 
     model_choice = st.selectbox(
         "Select Model",
-        ["openai/gpt-oss-120b", "openai/gpt-oss-120b"]
+        ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
     )
 
 topic = st.text_input("Topic", placeholder="e.g., The benefits of morning walks for developers")
@@ -68,9 +68,9 @@ if st.button("Generate Content", type="primary"):
                 4. Provide 5–8 highly relevant hashtags matching the platform style.
                 """
 
-                # Call Groq API
+                # Call Groq API passing the selected OpenAI model string variable
                 response = client.chat.completions.create(
-                    model=openai/gpt-oss-120b,
+                    model=model_choice,
                     messages=[
                         {"role": "system", "content": "You are a professional social media content assistant."},
                         {"role": "user", "content": prompt}
